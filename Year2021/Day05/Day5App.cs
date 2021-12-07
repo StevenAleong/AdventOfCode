@@ -8,7 +8,7 @@ namespace AdventOfCode.Year2021
 {
     internal class Day5App
     {
-        private List<string> Input = AppExtensions.GetInputList(Path.GetFullPath(@"./Year2021/Day5/Input.txt"));
+        private List<string> Input = AppExtensions.GetInputList(@"./Year2021/Day05/Input.txt");
 
         public void Execute()
         {

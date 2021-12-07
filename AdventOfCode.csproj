@@ -8,13 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="Year2021\Day4\Input.txt">
+    <None Update="Year2021\Day04\Input.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Year2021\Day5\Input.txt">
+    <None Update="Year2021\Day05\Input.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Year2021\Day6\Input.txt">
+    <None Update="Year2021\Day06\Input.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Year2021\_Template\Input.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Year2021\Day07\Input.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

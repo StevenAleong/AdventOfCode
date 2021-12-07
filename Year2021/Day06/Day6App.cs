@@ -8,8 +8,8 @@ namespace AdventOfCode.Year2021
 {
     internal class Day6App
     {
-        private string Input = AppExtensions.GetInputString(Path.GetFullPath(@"./Year2021/Day6/Input.txt"));
-        private List<int> Fish;
+        private string Input = AppExtensions.GetInputString(@"./Year2021/Day06/Input.txt");
+        private List<int> Fish = new List<int>();
 
         public void Execute()
         {
