@@ -82,7 +82,7 @@ namespace AdventOfCode.Year2021
             if (!CheckedIndexes.Any(m => m == $"{x},{y}"))
             {
                 CheckedIndexes.Add($"{x},{y}");
-
+                                
                 if (this.Data[x][y] != 9)
                     basinSize++;
 
@@ -102,10 +102,8 @@ namespace AdventOfCode.Year2021
                 if (y - 1 >= 0 && this.Data[x][y - 1] != 9)
                     GetBasinSize(ref basinSize, x, y - 1);
 
-            }
-                
+            }                
         }
-
 
     }
 
