@@ -9,5 +9,11 @@
 //var day6 = new Day6App();
 //day6.Execute();
 
-var day7 = new Day7App();
-day7.Execute();
+//var day7 = new Day7App();
+//day7.Execute();
+
+//var day8 = new Day08App();
+//day8.Execute();
+
+var day9 = new Day09App();
+day9.Execute();
