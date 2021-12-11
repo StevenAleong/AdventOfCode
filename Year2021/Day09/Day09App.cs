@@ -10,7 +10,7 @@ namespace AdventOfCode.Year2021
     {
         private List<string> Input = AppExtensions.GetInputList($"./Year2021/Day09/Input.txt");
 
-        List<List<int>> Data = new List<List<int>>();
+        private List<List<int>> Data = new List<List<int>>();
 
         public void Execute()
         {

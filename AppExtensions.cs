@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,6 +44,12 @@ namespace AdventOfCode
 
                 ++i;
             }
+        }
+
+        public static IEnumerable<T> DeepCopy<T>(this IEnumerable<T> collectionToDeepCopy)
+        {
+            var serializedCollection = JsonConvert.SerializeObject(collectionToDeepCopy);
+            return JsonConvert.DeserializeObject<IEnumerable<T>>(serializedCollection);
         }
 
     }
