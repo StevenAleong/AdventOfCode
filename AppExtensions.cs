@@ -52,5 +52,17 @@ namespace AdventOfCode
             return JsonConvert.DeserializeObject<IEnumerable<T>>(serializedCollection);
         }
 
+        public static bool IsStringLowercase(this string text)
+        {            
+            foreach(var c in text)
+            {
+                if (!Char.IsLower(c))
+                    return false;
+
+            }
+
+            return true;
+        }
+
     }
 }
