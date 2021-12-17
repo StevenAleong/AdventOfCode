@@ -27,7 +27,7 @@ namespace AdventOfCode.Year2021
             var highestX = 0;
             var highestY = 0;
 
-            var stepsToTry = 500;
+            var stepsToTry = 200;
 
             var successful = new List<string>();
 
@@ -64,8 +64,9 @@ namespace AdventOfCode.Year2021
 
             var hitsTarget = false;
 
-            var maxStepAttempts = 400;
-            for(var i = 0; i < maxStepAttempts; i++)
+            //var maxStepAttempts = 400;
+            //for(var i = 0; i < maxStepAttempts; i++)
+            while (true)
             {
                 velocityX += x;
                 velocityY += y;
@@ -92,9 +93,7 @@ namespace AdventOfCode.Year2021
             }
 
             if (hitsTarget)
-            {
                 return new Tuple<int, int>(highestX, highestY);
-            }
 
             return null;
         }
