@@ -27,11 +27,11 @@ namespace AdventOfCode.Year2021
             var highestX = 0;
             var highestY = 0;
 
-            var stepsToTry = 400;
+            var stepsToTry = 500;
 
             var successful = new List<string>();
 
-            for(var x = 1; x <= stepsToTry; x++)
+            for(var x = 0; x <= TargetXMax; x++)
             {
                 for(var y = TargetYMax; y <= stepsToTry; y++)
                 {
@@ -64,7 +64,8 @@ namespace AdventOfCode.Year2021
 
             var hitsTarget = false;
 
-            for(var i = 0; i < 600; i++)
+            var maxStepAttempts = 400;
+            for(var i = 0; i < maxStepAttempts; i++)
             {
                 velocityX += x;
                 velocityY += y;
