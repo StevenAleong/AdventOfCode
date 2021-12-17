@@ -28,7 +28,7 @@ namespace AdventOfCode.Year2021
 
         private void Part1()
         {
-            var output = 0l;
+            var output = 0L;
 
             for (var x = 0; x < this.Data.Count(); x++)
             {

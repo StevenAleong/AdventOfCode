@@ -24,7 +24,7 @@ namespace AdventOfCode.Year2021
 
         public void Part1()
         {
-            var total = 0l;
+            var total = 0L;
 
             var pointSystem = new Dictionary<string, int>();
             pointSystem.Add(")", 3);
@@ -62,7 +62,7 @@ namespace AdventOfCode.Year2021
                 {
                     var missing = CompleteMissingBrackets(result);
 
-                    var total = 0l;
+                    var total = 0L;
                     foreach (var b in missing.ToCharArray())
                     {
                         total = (total * 5) + pointSystem[b.ToString()];

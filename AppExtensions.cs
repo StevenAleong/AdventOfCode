@@ -80,5 +80,23 @@ namespace AdventOfCode
             }
         }
 
+        public static List<List<int>> ConvertStringListTo2DIntArray(this List<string> list)
+        {
+            var output = new List<List<int>>();
+
+            // Gather data into a grid
+            for (var i = 0; i < list.Count(); i++)
+            {
+                output.Add(list[i].ToCharArray().Select(m => Convert.ToInt32(m.ToString())).ToList());
+            }
+
+            return output;
+        }
+
+        public static int StringToBinaryInt(string text)
+        {
+            return Convert.ToInt32(text, 2);
+        }
+
     }
 }
