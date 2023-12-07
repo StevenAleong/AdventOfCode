@@ -1,5 +1,4 @@
 ﻿using AdventOfCode.Year2023;
 
-var day = new Day06App();
-day.Part1();
-day.Part2();
+var day = new Day07App();
+day.Execute();

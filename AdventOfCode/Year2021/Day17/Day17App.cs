@@ -50,8 +50,6 @@ namespace AdventOfCode.Year2021
                 }
             }
 
-            var test = "";
-
         }
 
         private Tuple<int, int>? TestVelocity(int x, int y)

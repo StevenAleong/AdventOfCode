@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode.Year2023
 {
-    internal class Day0XApp
+    internal class Day0X
     {
         private List<string> Input = AppExtensions.GetInputList($"./Year2023/Day01/input.txt");
 
