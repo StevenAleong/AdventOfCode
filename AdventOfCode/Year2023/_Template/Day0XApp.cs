@@ -10,6 +10,11 @@ namespace AdventOfCode.Year2023
     {
         private List<string> Input = AppExtensions.GetInputList($"./Year2023/Day01/input.txt");
 
+        public void Execute() {
+            Part1();
+            Part2();
+        }
+
         public void Part1()
         {
 
