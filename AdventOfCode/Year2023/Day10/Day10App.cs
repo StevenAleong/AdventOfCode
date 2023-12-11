@@ -15,8 +15,10 @@ namespace AdventOfCode.Year2023
 
         private List<char[]> maze = new List<char[]>();
         private List<char[]> maze2 = new List<char[]>();
+        
 
         private int[,] grid = new int[0, 0];
+        private int[,] loop = new int[0, 0];
 
         public void Execute() {
             var startingRow = 0;
@@ -38,6 +40,7 @@ namespace AdventOfCode.Year2023
             maze2 = maze.ToList();
 
             grid = new int[maze.Count, maze[0].Length];
+            loop = new int[maze.Count, maze[0].Length];
 
             Part1(startingRow, startingColumn);
 
@@ -60,25 +63,21 @@ namespace AdventOfCode.Year2023
             //Console.WriteLine();
             Console.WriteLine(furthestStep);
 
-            Part2();
+            Part2Loop(startingRow, startingColumn);
 
-            for (int i = 0; i < rows; i++) {
-                for (int j = 0; j < columns; j++) {
-                    if (maze[i][j] != '.' || grid[i, j] == -1) {
-                        grid[i, j] = -2;
-                        maze2[i][j] = 'x';
-                    }
-                }
-            }
+            //for (int i = 0; i < rows; i++) {
+            //    for (int j = 0; j < columns; j++) {
+            //        if (maze[i][j] != '.' || grid[i, j] == -1) {
+            //            grid[i, j] = -2;
+            //            maze2[i][j] = 'x';
+            //        }
+            //    }
+            //}
 
             int countOfZeros = 0;
             for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < columns; j++) {
-                    Console.Write(maze2[i][j]);
-
-                    if (grid[i, j] == 0) {
-                        countOfZeros++;
-                    }
+                    Console.Write(loop[i, j]);
                 }
                 Console.WriteLine();
             }
@@ -136,6 +135,52 @@ namespace AdventOfCode.Year2023
             //TraverseMaze(0, startingRow, startingColumn);
         }
 
+        public void Part2Loop(int startingRow, int startingColumn) {
+            Queue<(int row, int column)> queue = new Queue<(int, int)>();
+            queue.Enqueue((startingRow, startingColumn));
+
+            while (queue.Count > 0) {
+                var (row, column) = queue.Dequeue();
+
+                if (loop[row, column] == 0) {
+                    loop[row, column] = 1;
+
+                    // Get N node
+                    if (row > 0) {
+                        var northNode = maze[row - 1][column];
+                        if (northNode == '|' || northNode == '7' || northNode == 'F') {
+                            queue.Enqueue((row - 1, column));
+                        }
+                    }
+
+                    // Get E node 
+                    if (column < maze[0].Length - 1) {
+                        var eastNode = maze[row][column + 1];
+                        if (eastNode == '-' || eastNode == 'J' || eastNode == '7') {
+                            queue.Enqueue((row, column + 1));
+                        }
+                    }
+
+                    // Get S node
+                    if (row < maze.Count - 1) {
+                        var southNode = maze[row + 1][column];
+                        if (southNode == '|' || southNode == 'L' || southNode == 'J') {
+                            queue.Enqueue((row + 1, column));
+                        }
+                    }
+
+                    // Get W node
+                    if (column > 0) {
+                        var westNode = maze[row][column - 1];
+                        if (westNode == '-' || westNode == 'L' || westNode == 'F') {
+                            queue.Enqueue((row, column - 1));
+                        }
+                    }
+                }
+            }
+
+        }
+
         /// <summary>
         /// Does not do what is needed. just part 1 works only. me and my homies hate part 2
         /// </summary>
@@ -168,7 +213,7 @@ namespace AdventOfCode.Year2023
                 var (row, column) = queue.Dequeue();
 
                 if (grid[row, column] == 0) {
-                    grid[row, column] = -1;
+                    grid[row, column] = -1;                    
 
                     // Get N node
                     if (row > 0) {
@@ -178,16 +223,16 @@ namespace AdventOfCode.Year2023
                         }
                     }
 
-                    // Get NE node
-                    if (row > 0 && column < maze[0].Length - 1) {
-                        var northNode = maze[row - 1][column];
-                        var eastNode = maze[row][column + 1];
-                        var neNode = maze[row - 1][column + 1];
+                    //// Get NE node
+                    //if (row > 0 && column < maze[0].Length - 1) {
+                    //    var northNode = maze[row - 1][column];
+                    //    var eastNode = maze[row][column + 1];
+                    //    var neNode = maze[row - 1][column + 1];
 
-                        if (neNode == '.' && northNode == 'J' && eastNode == 'F') {
-                            queue.Enqueue((row - 1, column + 1));
-                        }
-                    }
+                    //    if (neNode == '.' && northNode == 'J' && eastNode == 'F') {
+                    //        queue.Enqueue((row - 1, column + 1));
+                    //    }
+                    //}
 
                     // Get E node 
                     if (column < maze[0].Length - 1) {
@@ -197,16 +242,16 @@ namespace AdventOfCode.Year2023
                         }
                     }
 
-                    // Get SE node
-                    if (row < maze.Count - 1 && column < maze[0].Length - 1) {
-                        var southNode = maze[row + 1][column];
-                        var eastNode = maze[row][column + 1];
-                        var seNode = maze[row + 1][column + 1];
+                    //// Get SE node
+                    //if (row < maze.Count - 1 && column < maze[0].Length - 1) {
+                    //    var southNode = maze[row + 1][column];
+                    //    var eastNode = maze[row][column + 1];
+                    //    var seNode = maze[row + 1][column + 1];
 
-                        if (seNode == '.' && southNode == '7' && eastNode == 'L') {
-                            queue.Enqueue((row + 1, column + 1));
-                        }
-                    }
+                    //    if (seNode == '.' && southNode == '7' && eastNode == 'L') {
+                    //        queue.Enqueue((row + 1, column + 1));
+                    //    }
+                    //}
 
                     // Get S node
                     if (row < maze.Count - 1) {
@@ -216,16 +261,16 @@ namespace AdventOfCode.Year2023
                         }
                     }
 
-                    // Get SW node
-                    if (row < maze.Count - 1 && column > 0) {
-                        var southNode = maze[row + 1][column];
-                        var westNode = maze[row][column - 1];
-                        var swNode = maze[row + 1][column - 1];
+                    //// Get SW node
+                    //if (row < maze.Count - 1 && column > 0) {
+                    //    var southNode = maze[row + 1][column];
+                    //    var westNode = maze[row][column - 1];
+                    //    var swNode = maze[row + 1][column - 1];
 
-                        if (swNode == '.' && southNode == 'F' && westNode == 'J') {
-                            queue.Enqueue((row + 1, column - 1));
-                        }
-                    }
+                    //    if (swNode == '.' && southNode == 'F' && westNode == 'J') {
+                    //        queue.Enqueue((row + 1, column - 1));
+                    //    }
+                    //}
 
                     // Get W node
                     if (column > 0) {
@@ -235,16 +280,16 @@ namespace AdventOfCode.Year2023
                         }
                     }
 
-                    // Get NW node
-                    if (row > 0 && column > 0) {
-                        var northNode = maze[row - 1][column];
-                        var westNode = maze[row][column - 1];
-                        var nwNode = maze[row - 1][column - 1];
+                    //// Get NW node
+                    //if (row > 0 && column > 0) {
+                    //    var northNode = maze[row - 1][column];
+                    //    var westNode = maze[row][column - 1];
+                    //    var nwNode = maze[row - 1][column - 1];
 
-                        if (nwNode == '.' && northNode == 'L' && westNode == '7') {
-                            queue.Enqueue((row - 1, column - 1));
-                        }
-                    }
+                    //    if (nwNode == '.' && northNode == 'L' && westNode == '7') {
+                    //        queue.Enqueue((row - 1, column - 1));
+                    //    }
+                    //}
                 }
 
             }
